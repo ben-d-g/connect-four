@@ -2,11 +2,11 @@ require("connect_four")
 
 describe Connect_Four do
   describe "initialise" do
-    xit "initialises board" do
+    it "initialises board" do
       expect(subject.return_board).to_not eq(nil)
     end
 
-    xit "initialises board with empty cells" do
+    it "initialises board with empty cells" do
       expect(subject.return_board).to eq(Array.new(6){Array.new(7){"-"}})
     end
   end
@@ -29,7 +29,7 @@ describe Connect_Four do
     end
 
     xit "entry to full column is rejected" do
-      let(:full_board){Connect_Four.new("full")}
+      let(:full_board){Connect_Four.new("all_x")}
       expect(full_board.valid_input(2)).to eq(false)
     end
 
@@ -89,7 +89,7 @@ describe Connect_Four do
     end
 
     xit "displays winner" do
-      let(:x_wins){Connect_Four.new("x_wins")}
+      let(:x_wins){Connect_Four.new("all_x")}
       expect(draw_game.find_winner).to eq("X")
     end
   end
