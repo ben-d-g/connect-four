@@ -19,6 +19,32 @@ class Connect_Four
   
   attr_accessor :board
 
+  def play()
+    while find_winner.nil?
+      print_board
+      puts("Enter column for #{to_play} >>")
+      move_input = gets.chomp
+      until valid_input?(move_input) and valid_place?(move_input.to_i - 1)
+        puts("Invalid entry")
+        move_input = gets.chomp
+      end
+      place(to_play, move_input.to_i - 1)
+    end
+    print_board
+    if find_winner == "draw"
+      puts("It's a draw!")
+    else
+      puts("Player #{find_winner} wins!")
+    end
+  end
+
+  def print_board
+    puts()
+    @board.each do |row|
+      puts(row.join)
+    end
+  end
+
   def valid_input?(input)
     #to_i maps strings to 0, so just check that input.to_i is in range
     return input.to_i.between?(1,7)
