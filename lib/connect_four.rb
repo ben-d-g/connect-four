@@ -48,7 +48,7 @@ class Connect_Four
     end
   end
 
-  def check_winner
+  def find_winner
     if check_rows
       return check_rows
     end
@@ -58,6 +58,10 @@ class Connect_Four
 
     if check_diagonals
       return check_diagonals
+    end
+
+    unless @board.flatten.include?("-")
+      return "draw"
     end
   end
 

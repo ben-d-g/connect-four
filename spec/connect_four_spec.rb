@@ -78,7 +78,7 @@ describe Connect_Four do
       game.place("X", 1)
       game.place("X", 2)
       game.place("X", 3)
-      expect(game.check_winner).to eq("X")
+      expect(game.find_winner).to eq("X")
     end
 
     it "check vertical" do
@@ -87,7 +87,7 @@ describe Connect_Four do
       game.place("O", 0)
       game.place("O", 0)
       game.place("O", 0)
-      expect(game.check_winner).to eq("O")
+      expect(game.find_winner).to eq("O")
     end
 
     it "check diagonal - 1" do
@@ -102,7 +102,7 @@ describe Connect_Four do
       game.place("X", 3)
       game.place("X", 3)
       game.place("O", 3)
-      expect(game.check_winner).to eq("O")
+      expect(game.find_winner).to eq("O")
     end
 
     it "check diagonal - 2" do
@@ -117,19 +117,19 @@ describe Connect_Four do
       game.place("X", 0)
       game.place("X", 0)
       game.place("O", 0)
-      expect(game.check_winner).to eq("O")
+      expect(game.find_winner).to eq("O")
     end
   end
 
   describe "end of game" do
-    xit "check for draw" do
-      let(:draw_game){Connect_Four.new("draw")}
+    it "check for draw" do
+      draw_game = Connect_Four.new("draw")
       expect(draw_game.find_winner).to eq("draw")
     end
 
-    xit "displays winner" do
-      let(:x_wins){Connect_Four.new("all_x")}
-      expect(draw_game.find_winner).to eq("X")
+    it "displays winner" do
+      x_wins = Connect_Four.new("all_x")
+      expect(x_wins.find_winner).to eq("X")
     end
   end
 end
