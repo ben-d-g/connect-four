@@ -28,6 +28,11 @@ describe Connect_Four do
       expect(subject.valid_input?(-1)).to eq(false)
     end
 
+    xit "entry to non-full column is accepted" do
+      let(:full_board){Connect_Four.new("all_x")}
+      expect(full_board.valid_place?(2)).to eq(true)
+    end
+
     xit "entry to full column is rejected" do
       let(:full_board){Connect_Four.new("all_x")}
       expect(full_board.valid_place?(2)).to eq(false)
