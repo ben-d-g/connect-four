@@ -21,6 +21,10 @@ class Connect_Four
     return input.to_i.between?(1,7)
   end
 
+  def valid_place?(column)
+    return @board[0][column] == "-"
+  end
+
   def return_board
     return @board
   end
