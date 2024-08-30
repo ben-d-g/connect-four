@@ -49,12 +49,25 @@ describe Connect_Four do
       expect{empty_board.place("X", 4)}.to change{empty_board.board[3]}.to(["-","-","-","-","X","-","-"])
     end
 
-    xit "players take turns - odd turn" do
+    it "players take turns - odd turn" do
       expect(subject.to_play(1)).to eq("X")
     end
 
-    xit "players take turns - even turn" do
+    it "players take turns - even turn" do
       expect(subject.to_play(10)).to eq("O")
+    end
+
+    it "players take turns - based on #place 1" do
+      empty_board = Connect_Four.new()
+      expect(empty_board.to_play).to eq("X")
+    end
+
+    it "players take turns - based on #place 2" do
+      empty_board = Connect_Four.new()
+      empty_board.place("X",3)
+      empty_board.place("O",5)
+      empty_board.place("X",2)
+      expect(empty_board.to_play).to eq("O")
     end
   end
 

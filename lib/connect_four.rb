@@ -1,6 +1,7 @@
 class Connect_Four
   def initialize(preset = "empty")
     @board = Array.new(6){Array.new(7){"-"}}
+    @turns = 0
 
     if preset == "all_x"
       @board = Array.new(6){Array.new(7){"X"}}
@@ -36,6 +37,15 @@ class Connect_Four
       end
     end
     @board[row_to_edit][column] = symbol
+    @turns += 1
+  end
+
+  def to_play(turn = @turns + 1)
+    if turn % 2 == 0
+      return "O"
+    else
+      return "X"
+    end
   end
 
   def return_board
