@@ -29,7 +29,6 @@ describe Connect_Four do
     end
 
     it "entry to non-full column is accepted" do
-      #full_board = Connect_Four.new("all_x")
       expect(subject.valid_place?(2)).to eq(true)
     end
 
@@ -38,9 +37,16 @@ describe Connect_Four do
       expect(full_board.valid_place?(2)).to eq(false)
     end
 
-    xit "symbol falls to bottom of column" do
-      let(:empty_board){Connect_Four.new()}
-      expect(empty_board.place("X", 2)).to change(empty_board.last)
+    it "symbol falls to bottom of column - 1" do
+      empty_board = Connect_Four.new()
+      expect{empty_board.place("X", 2)}.to change{empty_board.board[5]}.to(["-","-","X","-","-","-","-"])
+    end
+
+    it "symbol falls to bottom of column - 2" do
+      empty_board = Connect_Four.new()
+      empty_board.place("X", 4)
+      empty_board.place("O", 4)
+      expect{empty_board.place("X", 4)}.to change{empty_board.board[3]}.to(["-","-","-","-","X","-","-"])
     end
 
     xit "players take turns - odd turn" do

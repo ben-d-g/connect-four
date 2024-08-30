@@ -15,6 +15,8 @@ class Connect_Four
                 ["O","O","X","X","O","O","X"],]
     end
   end
+  
+  attr_accessor :board
 
   def valid_input?(input)
     #to_i maps strings to 0, so just check that input.to_i is in range
@@ -23,6 +25,17 @@ class Connect_Four
 
   def valid_place?(column)
     return @board[0][column] == "-"
+  end
+
+  def place(symbol, column)
+    row_to_edit = 0
+    5.downto(0) do |row|
+      if @board[row][column] == "-"
+        row_to_edit = row
+        break
+      end
+    end
+    @board[row_to_edit][column] = symbol
   end
 
   def return_board
