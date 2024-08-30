@@ -16,6 +16,11 @@ class Connect_Four
     end
   end
 
+  def valid_input?(input)
+    #to_i maps strings to 0, so just check that input.to_i is in range
+    return input.to_i.between?(1,7)
+  end
+
   def return_board
     return @board
   end

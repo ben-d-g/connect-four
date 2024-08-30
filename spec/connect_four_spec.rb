@@ -12,25 +12,25 @@ describe Connect_Four do
   end
 
   describe "player moves" do
-    xit "in range input is accepted" do
+    it "in range input is accepted" do
       expect(subject.valid_input?(4)).to eq(true)
     end
 
-    xit "string input is rejected" do
-      expect(subject.valid_input("four")).to eq(false)
+    it "string input is rejected" do
+      expect(subject.valid_input?("four")).to eq(false)
     end
 
-    xit "out of range input is rejected - 1" do
+    it "out of range input is rejected - 1" do
       expect(subject.valid_input?(9)).to eq(false)
     end
 
-    xit "out of range input is rejected - 2" do
+    it "out of range input is rejected - 2" do
       expect(subject.valid_input?(-1)).to eq(false)
     end
 
     xit "entry to full column is rejected" do
       let(:full_board){Connect_Four.new("all_x")}
-      expect(full_board.valid_input(2)).to eq(false)
+      expect(full_board.valid_place?(2)).to eq(false)
     end
 
     xit "symbol falls to bottom of column" do
