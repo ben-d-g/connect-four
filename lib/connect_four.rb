@@ -48,6 +48,62 @@ class Connect_Four
     end
   end
 
+  def check_winner
+    if check_rows
+      return check_rows
+    end
+    if check_cols
+      return check_cols
+    end
+
+    if check_diagonals
+      return check_diagonals
+    end
+  end
+
+  def check_rows
+    0.upto(5) do |row|
+      0.upto(3) do |col|
+        if (@board[row][col] != "-") and (@board[row][col] == @board[row][col + 1]) and (@board[row][col] == @board[row][col + 2]) and (@board[row][col] == @board[row][col + 3])
+          return @board[row][col]
+        end
+      end
+    end
+    return nil
+  end
+
+  def check_cols
+    0.upto(2) do |row|
+      0.upto(6) do |col|
+        if (@board[row][col] != "-") and (@board[row][col] == @board[row + 1][col]) and (@board[row][col] == @board[row + 2][col]) and (@board[row][col] == @board[row + 3][col])
+          return @board[row][col]
+        end
+      end
+    end
+    return nil
+  end
+
+  def check_diagonals
+    0.upto(2) do |row|
+      0.upto(3) do |col|
+        if @board[row][col] != nil && @board[row][col] != '-' && @board[row][col] == @board[row+1][col+1] && @board[row][col] == @board[row+2][col+2] && @board[row][col] == @board[row+3][col+3]
+          return @board[row][col]
+        end
+      end
+    end
+  
+    3.upto(5) do |row|
+      0.upto(3) do |col|
+        if @board[row][col] != nil && @board[row][col] != '-' && @board[row][col] == @board[row-1][col+1] && @board[row][col] == @board[row-2][col+2] && @board[row][col] == @board[row-3][col+3]
+          return @board[row][col]
+        end
+      end
+    end
+  
+    return nil
+  end
+  
+
   def return_board
     return @board
   end

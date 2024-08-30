@@ -72,8 +72,8 @@ describe Connect_Four do
   end
 
   describe "check win conditions" do
-    xit "check horizontal" do
-      let(:game){Connect_Four.new}
+    it "check horizontal" do
+      game = Connect_Four.new
       game.place("X", 0)
       game.place("X", 1)
       game.place("X", 2)
@@ -81,8 +81,8 @@ describe Connect_Four do
       expect(game.check_winner).to eq("X")
     end
 
-    xit "check vertical" do
-      let(:game){Connect_Four.new}
+    it "check vertical" do
+      game = Connect_Four.new
       game.place("O", 0)
       game.place("O", 0)
       game.place("O", 0)
@@ -90,17 +90,32 @@ describe Connect_Four do
       expect(game.check_winner).to eq("O")
     end
 
-    xit "check diagonal" do
-      let(:game){Connect_Four.new}
+    it "check diagonal - 1" do
+      game = Connect_Four.new
       game.place("O", 0)
       game.place("X", 1)
       game.place("O", 1)
       game.place("X", 2)
       game.place("X", 2)
-      game.place("O", 0)
+      game.place("O", 2)
       game.place("X", 3)
       game.place("X", 3)
       game.place("X", 3)
+      game.place("O", 3)
+      expect(game.check_winner).to eq("O")
+    end
+
+    it "check diagonal - 2" do
+      game = Connect_Four.new
+      game.place("O", 3)
+      game.place("X", 2)
+      game.place("O", 2)
+      game.place("X", 1)
+      game.place("X", 1)
+      game.place("O", 1)
+      game.place("X", 0)
+      game.place("X", 0)
+      game.place("X", 0)
       game.place("O", 0)
       expect(game.check_winner).to eq("O")
     end
